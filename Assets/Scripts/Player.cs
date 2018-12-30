@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        weapon = Instantiate(weapon, transform);
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -21,6 +22,10 @@ public class Player : MonoBehaviour
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+
+        if (Input.GetButton("Fire1")) {
+            weapon.GetComponent<Fireable>().Fire();
+        }
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         movement = movement * moveSpeed;
