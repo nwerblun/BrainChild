@@ -27,4 +27,20 @@ public class Player : MonoBehaviour
 
         rb2d.velocity = new Vector2(Mathf.Clamp(movement.x, -maxMoveSpeed, maxMoveSpeed), Mathf.Clamp(movement.y, -maxMoveSpeed, maxMoveSpeed));
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        UI_Collision.setFlag("");
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        UI_Collision.setFlag(collision.gameObject.name);
+    }
 }
