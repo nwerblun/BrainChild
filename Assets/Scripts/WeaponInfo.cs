@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class WeaponInfo : MonoBehaviour
 {
 /* Has a bunch of variables
  * base damage
