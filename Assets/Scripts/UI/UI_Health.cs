@@ -8,9 +8,13 @@ public class UI_Health : MonoBehaviour
     
     private int health = 100;                       // need to reference the players health 
 
-    public Text UI_health;
+    private Text UI_health;
 
-    public void Update()
+    private void Start()
+    {
+        UI_health = gameObject.GetComponent<Text>();
+    }
+    private void Update()
     {
         UI_health.text = "HP : " + health;
 
