@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -30}
-  m_SizeDelta: {x: 160, y: 16}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 16}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8005340161099428093
 CanvasRenderer:
@@ -92,4 +92,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47f2308c8c77c224e97c67718ee19a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_ammo: {fileID: 8005340161099428610}
