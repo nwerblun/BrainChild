@@ -10,12 +10,12 @@ public class ProjectileInfo : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Done");
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Hit");
+        Debug.Log("Hit or miss");
 
         Destroy(gameObject);
     }

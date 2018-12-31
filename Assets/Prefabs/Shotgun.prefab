@@ -135,20 +135,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7271fe8672c55e147bd1cdb219ac7d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  base_dmg: 10
-  dmg_modifier: 0
-  fire_rate: 1
-  fire_rate_modifier: 0
-  reload_speed: 0
-  reload_speed_modifier: 0
-  bullets_per_shot: 8
-  bullet_per_shot_modifier: 0
-  bullet_spread: 0.15
-  bullet_speed: 75
-  bullet_speed_modifier: 0
-  clip_size: 0
-  clip_size_modifier: 0
-  ammo_left: 0
+  baseDmg: 0
+  dmgModifier: 0
+  fireRate: 0.5
+  fireRateModifier: 0
+  reloadSpeed: 0
+  reloadSpeedModifier: 0
+  bulletsPerShot: 5
+  bulletPerShotModifier: 0
+  bulletSpread: 0.2
+  bulletSpeed: 20
+  bulletSpeedModifier: 0
+  clipSize: 10
+  clipSizeModifier: 0
+  ammoLeft: 0
 --- !u!82 &9070526575914432167
 AudioSource:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2203773368e4340d98c114f55c2dd7fd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1f611632a95f2fe4c829c04fb9560019, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1

@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class AmmoPool : MonoBehaviour
 {
-/*Has int for every type of ammo
- * int for max of every type
- * methods:
- * TakeAmmo(amount, type)
- * ...
- * AddAmmo(amount, type)
- */
+    /*Has int for every type of ammo
+     * int for max of every type
+     * methods:
+     * TakeAmmo(amount, type)
+     * ...
+     * AddAmmo(amount, type)
+     */
+
+    public int shotgunAmmo;
+    public int rifleAmmo;
+    public int pistolAmmo;
+
 }
