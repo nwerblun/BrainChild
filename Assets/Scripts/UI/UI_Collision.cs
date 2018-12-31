@@ -9,21 +9,20 @@ public class UI_Collision : MonoBehaviour
 
     private Text UI_collision;
 
-    public static void setFlag(string objectName)
+    public static void setFlag(string name)
     {
-        UI_Collision.objectName = objectName;
+        Debug.Log("WHY: " + name);
+        objectName = name;
     }
 
     private void Start()
     {
         UI_collision = gameObject.GetComponent<Text>();
     }
+
     // Update is called once per frame
     private void Update()
     {
-        if (objectName != "")
-            UI_collision.text = "Collision: " + objectName;
-        else
-            UI_collision.text = "Collision:";
+        UI_collision.text = "Collision: " + objectName;
     }
 }

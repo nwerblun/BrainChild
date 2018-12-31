@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Reloadable : MonoBehaviour
 {
-    CustomUtils.WeaponTypes type;
+    public CustomUtils.WeaponTypes type;
     //TODO reduce player's ammo by calling ammopool.take ammo
     AmmoPool pool;
     WeaponInfo info;
