@@ -6,7 +6,7 @@ public class ProjectileInfo : MonoBehaviour
 {
     //Has info about how much damage it does
     //Has info about who shot it??
-
+    //DamageFalloff
 
     private void Start()
     {

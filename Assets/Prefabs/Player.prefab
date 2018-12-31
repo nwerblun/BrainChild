@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 869679428872882750}
   - component: {fileID: 869679428872882737}
   - component: {fileID: 8847893592223268032}
+  - component: {fileID: 6233556896357197730}
   m_Layer: 31
   m_Name: Player
   m_TagString: Player
@@ -144,3 +145,21 @@ MonoBehaviour:
   moveSpeed: 50
   maxMoveSpeed: 100
   weapon: {fileID: 1559216925512390268, guid: b667619e9c0164d4e96ee768389f6d1e, type: 3}
+--- !u!114 &6233556896357197730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869679428872882739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d45bc2b1ff1b74e8dceb552662e428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotgunAmmo: 23
+  rifleAmmo: 0
+  pistolAmmo: 0
+  maxShotgunAmmo: 0
+  maxRifleAmmo: 0
+  maxPistolAmmo: 0

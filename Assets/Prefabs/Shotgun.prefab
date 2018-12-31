@@ -139,16 +139,19 @@ MonoBehaviour:
   dmgModifier: 0
   fireRate: 0.5
   fireRateModifier: 0
-  reloadSpeed: 0
-  reloadSpeedModifier: 0
-  bulletsPerShot: 5
+  reloadSpeed: 2
+  reloadSpeedModifier: 1
+  bulletsPerShot: 10
   bulletPerShotModifier: 0
-  bulletSpread: 0.2
-  bulletSpeed: 20
+  bulletMagStd: 0.05
+  bulletSpreadStd: 10
+  maxSpreadAng: 15
+  maxSpreadMag: 0.1
+  bulletSpeed: 50
   bulletSpeedModifier: 0
   clipSize: 10
   clipSizeModifier: 0
-  ammoLeft: 0
+  ammoLeft: 10
 --- !u!82 &9070526575914432167
 AudioSource:
   m_ObjectHideFlags: 0
