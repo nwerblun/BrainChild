@@ -4,11 +4,45 @@ using UnityEngine;
 
 public class AmmoPool : MonoBehaviour
 {
-/*Has int for every type of ammo
- * int for max of every type
- * methods:
- * TakeAmmo(amount, type)
- * ...
- * AddAmmo(amount, type)
- */
+    public int shotgunAmmo;
+    public int rifleAmmo;
+    public int pistolAmmo;
+
+    public int maxShotgunAmmo;
+    public int maxRifleAmmo;
+    public int maxPistolAmmo;
+
+    //Add more later
+
+    //Returns how much ammo you got
+    public int TakeAmmo(int amount, CustomUtils.WeaponTypes type)
+    {
+        if (amount <= 0) {
+            return 0;
+        }
+        int returnAmount = 0;
+        if (type == CustomUtils.WeaponTypes.Shotgun) {
+            if (amount >= shotgunAmmo) {
+                returnAmount = shotgunAmmo;
+                shotgunAmmo = 0;
+            }  else {
+                returnAmount = amount;
+                shotgunAmmo -= amount;
+            }
+        }
+
+        return returnAmount;
+    }
+
+    public void AddAmmo(int amount, CustomUtils.WeaponTypes type)
+    {
+        if (type == CustomUtils.WeaponTypes.Shotgun) {
+            if (amount + shotgunAmmo >= maxShotgunAmmo) {
+                shotgunAmmo = maxShotgunAmmo;
+            } else {
+                shotgunAmmo += amount;
+            }
+        }
+    }
+
 }

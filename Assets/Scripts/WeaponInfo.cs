@@ -4,50 +4,36 @@ using UnityEngine;
 
 public class WeaponInfo : MonoBehaviour
 {
-    /* Has a bunch of variables
-     * base damage
-     * damage multiplier
-     * fire rate
-     * bulletspershot
-     * bullet per shot mod
-     * bullet speed
-     * bullet speed modifier
-     * fire rate modifier
-     * reload modifier
-     * reload speed
-     * clip size
-     * clip size modifier
-     * ammo in clip
-     * ammo that gun uses
-     */
+    public float baseDmg;
+    public float dmgModifier = 1;
 
-    public float base_dmg;
-    public float dmg_modifier;
+    public float fireRate;                           // In terms of time till new shot can be fired
+    public float fireRateModifier = 1;
 
-    public float fire_rate;                           // In terms of time till new shot can be fired
-    public float fire_rate_modifier;
+    public float reloadSpeed;                      // In terms of how long the reload animations takes
+    public float reloadSpeedModifier = 1;
 
-    public float reload_speed;                      // In terms of how long the reload animations takes
-    public float reload_speed_modifier;
+    public int bulletsPerShot;
+    public float bulletPerShotModifier = 1;
 
-    public int bullets_per_shot;
-    public float bullet_per_shot_modifier;
+    public float bulletMagStd;                     //The std of a normal distribution ceneterd around the aim direction for affecting magnitude
+    public float bulletSpreadStd;                     //The std of a normal distribution ceneterd around the aim direction for affecting angle of shot
+    public float maxSpreadAng;
+    public float maxSpreadMag;
 
-    public float bullet_spread;                     // aka accuracy
+    public float bulletSpeed;
+    public float bulletSpeedModifier = 1;
 
-    public float bullet_speed;
-    public float bullet_speed_modifier;
+    public int clipSize;
+    public float clipSizeModifier = 1;
 
-    public int clip_size;
-    public float clip_size_modifier;
-
-    public int ammo_left;
+    public int ammoLeft;
 
     // I want to add item cost in terms of $$$. Doesnt seem like it belongs here. Maybe we still have an item class?
 
     private void Start()
     {
-        fire_rate = 1 / fire_rate;
+
     }
 
 }

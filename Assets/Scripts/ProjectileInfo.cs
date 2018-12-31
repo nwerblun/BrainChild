@@ -6,16 +6,16 @@ public class ProjectileInfo : MonoBehaviour
 {
     //Has info about how much damage it does
     //Has info about who shot it??
-
+    //DamageFalloff
 
     private void Start()
     {
-        Debug.Log("Done");
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Hit");
+        Debug.Log("Hit or miss");
 
         Destroy(gameObject);
     }

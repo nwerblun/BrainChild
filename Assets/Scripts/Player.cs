@@ -27,6 +27,10 @@ public class Player : MonoBehaviour
             weapon.GetComponent<Fireable>().Fire();
         }
 
+        if (Input.GetButton("Reload")) {
+            weapon.GetComponent<Reloadable>().Reload();
+        }
+
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         movement = movement * moveSpeed;
 
