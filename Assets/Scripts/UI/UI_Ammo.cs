@@ -7,7 +7,12 @@ public class UI_Ammo : MonoBehaviour
 {
     private int shotgunAmmo = 100;                       // need to reference the players ammo here
 
-    public Text UI_ammo;
+    private Text UI_ammo;
+
+    private void Start()
+    {
+        UI_ammo = gameObject.GetComponent<Text>();
+    }
 
     public void Update()
     {
