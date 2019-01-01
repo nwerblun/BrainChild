@@ -20,11 +20,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 currPos = transform.position;
+        Vector2 diff = currMousePos - currPos;
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
         if (Input.GetButton("Fire1")) {
-            weapon.GetComponent<Fireable>().Fire();
+            weapon.GetComponent<Fireable>().Fire(diff);
         }
 
         if (Input.GetButton("Reload")) {

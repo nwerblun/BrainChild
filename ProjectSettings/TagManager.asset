@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UI
   - Item
+  - GunBarrel
   layers:
   - Default
   - TransparentFX

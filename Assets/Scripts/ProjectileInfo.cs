@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ProjectileInfo : MonoBehaviour
 {
-    //Has info about how much damage it does
     //Has info about who shot it??
-    //DamageFalloff
+    public float projectileKnockback;
+    public float initialDmg;
+    public float projectileFalloff;
 
     private void Start()
     {
