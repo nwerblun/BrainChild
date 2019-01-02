@@ -16,6 +16,8 @@ public class ItemPickup : MonoBehaviour
         sprite = gameObject.GetComponent<SpriteRenderer>();
         sprite.sprite = item.GetComponent<SpriteRenderer>().sprite;
 
+        transform.localScale = item.GetComponent<Transform>().localScale;
+
 
         // create poly collider
         polyCollider = gameObject.AddComponent<PolygonCollider2D>();
@@ -30,17 +32,30 @@ public class ItemPickup : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("Coin Touched");
+            Debug.Log("On pickup");
 
             // general item pick up collider ...
             // call the prefabs pick up method.
+            Debug.Log(item.GetComponent<ItemInfo>().isInteract.ToString());
 
-            item.GetComponent<ItemInfo>().onPickup(collision.gameObject);
-            Destroy(gameObject);
+            if(item.GetComponent<ItemInfo>().isInteract && Input.GetButton("Interact"))
+            {
+                Debug.Log("LE WHY");
+                item.GetComponent<ItemInfo>().onPickup(collision.gameObject);
+                Destroy(gameObject);
+            }
+                
+            if(!item.GetComponent<ItemInfo>().isInteract)
+            {
+                item.GetComponent<ItemInfo>().onPickup(collision.gameObject);
+                Destroy(gameObject);
+            }
+
+            
         }
         
     }
