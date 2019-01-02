@@ -30,9 +30,4 @@ public class WeaponInfo : MonoBehaviour
 
     // I want to add item cost in terms of $$$. Doesnt seem like it belongs here. Maybe we still have an item class?
 
-    private void Start()
-    {
-
-    }
-
 }

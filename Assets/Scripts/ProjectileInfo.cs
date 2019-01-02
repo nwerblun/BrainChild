@@ -16,7 +16,6 @@ public class ProjectileInfo : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Hit or miss");
         //Call the hit object's "TakesDamageFromProjectiles" hit method and update it with vals
         
         Destroy(gameObject);
