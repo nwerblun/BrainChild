@@ -17,7 +17,7 @@ public class UI_Currency : MonoBehaviour
 
     private void Update()
     {
-        currency = 100;
+        currency = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().currency;
         UI_currency.text = "Currency: $" + currency;
     }
 }

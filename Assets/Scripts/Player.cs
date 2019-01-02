@@ -17,6 +17,12 @@ public class Player : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+    public void SwitchWeapon(GameObject newWeapon)
+    {
+        Destroy(weapon);
+        weapon = Instantiate(newWeapon, transform);
+    }
+
     // Update is called once per frame
     void Update()
     {

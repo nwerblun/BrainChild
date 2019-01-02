@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 869679428872882737}
   - component: {fileID: 8847893592223268032}
   - component: {fileID: 6233556896357197730}
+  - component: {fileID: 81572899371768195}
   m_Layer: 31
   m_Name: Player
   m_TagString: Player
@@ -144,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 700
   maxMoveSpeed: 1500
-  weapon: {fileID: 1559216925512390268, guid: b667619e9c0164d4e96ee768389f6d1e, type: 3}
+  weapon: {fileID: 4658187815749319918, guid: 4e8346d291e453d4a85d456fd11d3e9d, type: 3}
 --- !u!114 &6233556896357197730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,9 +158,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d45bc2b1ff1b74e8dceb552662e428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotgunAmmo: 23
-  rifleAmmo: 0
-  pistolAmmo: 0
-  maxShotgunAmmo: 200
-  maxRifleAmmo: 0
-  maxPistolAmmo: 0
+  shotgunAmmo: 35
+  rifleAmmo: 200
+  pistolAmmo: 200
+  maxShotgunAmmo: 1000
+  maxRifleAmmo: 1000
+  maxPistolAmmo: 1000
+--- !u!114 &81572899371768195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869679428872882739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385d8e60e3fca5344b411985e214548b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currency: 0

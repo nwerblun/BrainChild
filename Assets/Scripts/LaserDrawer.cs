@@ -15,7 +15,7 @@ public class LaserDrawer : MonoBehaviour
             start = drawStartLoc;
         else
             start = transform;
-        layerMask = ~(1 << LayerMask.NameToLayer("PlayerLayer"));
+        layerMask = ~((1 << LayerMask.NameToLayer("PlayerLayer")) + (1 << LayerMask.NameToLayer("Item")));
         line = transform.GetComponent<LineRenderer>();
         line.positionCount = 2;
     }

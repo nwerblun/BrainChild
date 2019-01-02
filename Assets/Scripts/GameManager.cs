@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerLayer"), LayerMask.NameToLayer("PlayerProjectiles"), true);
-        // Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerLayer"), LayerMask.NameToLayer("Item"));
+        //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerLayer"), LayerMask.NameToLayer("Item"));
     }
 
     // Update is called once per frame

@@ -30,6 +30,16 @@ public class AmmoPool : MonoBehaviour
                 shotgunAmmo -= amount;
             }
         }
+        else if (type == CustomUtils.WeaponTypes.Rifle) {
+            if (amount >= rifleAmmo) {
+                returnAmount = rifleAmmo;
+                rifleAmmo = 0;
+            }
+            else {
+                returnAmount = amount;
+                rifleAmmo -= amount;
+            }
+        }
 
         return returnAmount;
     }
@@ -41,6 +51,14 @@ public class AmmoPool : MonoBehaviour
                 shotgunAmmo = maxShotgunAmmo;
             } else {
                 shotgunAmmo += amount;
+            }
+        }
+        else if (type == CustomUtils.WeaponTypes.Rifle) {
+            if (amount + rifleAmmo >= maxRifleAmmo) {
+                rifleAmmo = maxRifleAmmo;
+            }
+            else {
+                rifleAmmo += amount;
             }
         }
     }
