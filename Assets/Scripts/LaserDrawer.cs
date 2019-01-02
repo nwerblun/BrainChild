@@ -30,8 +30,6 @@ public class LaserDrawer : MonoBehaviour
         //Now translate the vector to be at the chosen location
         final = (Vector2)start.position + final * maxLineRenderDist;
         //Draw lines
-
-        //line.SetPosition(0, (Vector2)start.position);
         Vector2 lerpedStart = Vector2.Lerp(line.GetPosition(0), start.position, Time.deltaTime * 250);
         line.SetPosition(0, lerpedStart);
 

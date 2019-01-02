@@ -11,7 +11,6 @@ public class UI_Collision : MonoBehaviour
 
     public static void setFlag(string name)
     {
-        Debug.Log("WHY: " + name);
         objectName = name;
     }
 
