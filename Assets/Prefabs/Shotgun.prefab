@@ -149,11 +149,17 @@ MonoBehaviour:
   bulletSpreadStd: 10
   maxSpreadAng: 15
   maxSpreadMag: 0.1
-  bulletSpeed: 50
+  bulletSpeed: 100
   bulletSpeedModifier: 0
   clipSize: 10
   clipSizeModifier: 0
   ammoLeft: 10
+  playerKnockback: 100
+  playerKnockbackModifier: 1
+  projectileKnockback: 0
+  projectileKnockbackModifier: 1
+  projectileFalloff: 0
+  projectileFalloffModifier: 1
 --- !u!82 &9070526575914432167
 AudioSource:
   m_ObjectHideFlags: 0

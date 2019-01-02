@@ -122,11 +122,11 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 13
+  m_AngularDrag: 0.3
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3934f0d478b42ad47bbbc4bd66d52f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
-  maxMoveSpeed: 100
+  moveSpeed: 700
+  maxMoveSpeed: 1500
   weapon: {fileID: 1559216925512390268, guid: b667619e9c0164d4e96ee768389f6d1e, type: 3}
 --- !u!114 &6233556896357197730
 MonoBehaviour:
@@ -160,6 +160,6 @@ MonoBehaviour:
   shotgunAmmo: 23
   rifleAmmo: 0
   pistolAmmo: 0
-  maxShotgunAmmo: 0
+  maxShotgunAmmo: 200
   maxRifleAmmo: 0
   maxPistolAmmo: 0

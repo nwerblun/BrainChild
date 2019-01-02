@@ -17,16 +17,12 @@ public class TracksMouse : MonoBehaviour
 
         float currAngle = transform.rotation.eulerAngles.z;
         float mouseAngle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        Vector3 desiredRotation;
+        Vector3 desiredRotation = new Vector3(0, 0, Mathf.LerpAngle(currAngle, mouseAngle, Time.deltaTime * 50));
 
-        if (mouseAngle < 90 && mouseAngle > -90) {
-            desiredRotation = new Vector3(0, 0, Mathf.LerpAngle(currAngle, mouseAngle, Time.deltaTime * 50));
+        if (mouseAngle < 90 && mouseAngle > -90)
             transform.localScale = originalScale;
-        }
-        else {
-            desiredRotation = new Vector3(0, 0, Mathf.LerpAngle(currAngle, mouseAngle, Time.deltaTime * 50));
+        else 
             transform.localScale = new Vector3(originalScale.x, -originalScale.y, originalScale.z);
-        }
         //Debug.Log(angleDiff);
         transform.eulerAngles = desiredRotation;
     }

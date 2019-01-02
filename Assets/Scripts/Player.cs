@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        Vector2 moveVector = new Vector2(moveHorizontal, moveVertical).normalized * moveSpeed;
 
         if (Input.GetButton("Fire1")) {
             weapon.GetComponent<Fireable>().Fire(diff);
@@ -35,10 +36,8 @@ public class Player : MonoBehaviour
             weapon.GetComponent<Reloadable>().Reload();
         }
 
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        movement = movement * moveSpeed;
-
-        rb2d.velocity = new Vector2(Mathf.Clamp(movement.x, -maxMoveSpeed, maxMoveSpeed), Mathf.Clamp(movement.y, -maxMoveSpeed, maxMoveSpeed));
+        rb2d.AddForce(moveVector);
+        rb2d.velocity = Vector2.ClampMagnitude(rb2d.velocity, maxMoveSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -15,8 +15,7 @@ public static class CustomUtils
     {
         float v1, v2, s;
         int iterations = 0;
-        do
-        {
+        do {
             v1 = 2.0f * Random.Range(0f, 1f) - 1.0f;
             v2 = 2.0f * Random.Range(0f, 1f) - 1.0f;
             s = v1 * v1 + v2 * v2;
@@ -35,16 +34,14 @@ public static class CustomUtils
 
     public static float NextGaussian(float mean, float standard_deviation, float min, float max)
     {
-        if (min == max)
-        {
+        if (min == max) {
             Debug.Log("YO YOU HAVE BAD GAUSSIAN VALUES");
             return -1;
         }
 
         float x;
         int iterations = 0;
-        do
-        {
+        do {
             x = NextGaussian(mean, standard_deviation);
             iterations++;
         } while (x < min || x > max && iterations < 500);

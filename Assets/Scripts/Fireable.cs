@@ -101,13 +101,8 @@ public class Fireable : MonoBehaviour
     {
         Transform parent = transform.parent;
         Rigidbody2D rb2d = parent.GetComponent<Rigidbody2D>();
-        if (parent != null)
-        {
-            Debug.Log(parent.tag);
-            Debug.Log("True, applying " + (dir.normalized * weaponInfo.playerKnockback * weaponInfo.playerKnockbackModifier).ToString());
-            rb2d.velocity = dir.normalized * weaponInfo.playerKnockback * weaponInfo.playerKnockbackModifier;
-            //rb2d.AddForce(dir.normalized * weaponInfo.playerKnockback * weaponInfo.playerKnockbackModifier, ForceMode2D.Impulse);
-
+        if (parent != null && rb2d != null) {
+            rb2d.AddForce(dir.normalized * weaponInfo.playerKnockback * weaponInfo.playerKnockbackModifier, ForceMode2D.Impulse);
         }
     }
 }

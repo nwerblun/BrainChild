@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Temporary : MonoBehaviour
 {
-    //time before delete attribute
-    //max travel distance before delete
-    //start pos -> compute distance traveled
-    //Deletes gameobject after fixed time
     public float timeToDelete;
     public float maxTravelDistance;
     public Vector2 startPos;

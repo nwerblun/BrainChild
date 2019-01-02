@@ -132,6 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9235a9dc441e2a445bf45d2fe5a53fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileKnockback: 0
+  initialDmg: 0
+  projectileFalloff: 0
 --- !u!114 &801128707849783309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375d35f364e5f9a48a4dc46d8c9190fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToDelete: 15
-  maxTravelDistance: 1000
+  timeToDelete: 8
+  maxTravelDistance: 200
   startPos: {x: 0, y: 0}
