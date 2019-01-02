@@ -18,7 +18,7 @@ public class ProjectileInfo : MonoBehaviour
     {
         Debug.Log("Hit or miss");
         //Call the hit object's "TakesDamageFromProjectiles" hit method and update it with vals
-        //
+        
         Destroy(gameObject);
     }
 }

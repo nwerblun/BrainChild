@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
 
-    public int currency;
+    public uint currency;
 
     private void Start()
     {

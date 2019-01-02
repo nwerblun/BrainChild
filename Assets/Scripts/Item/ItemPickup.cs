@@ -19,6 +19,7 @@ public class ItemPickup : MonoBehaviour
 
         // create poly collider
         polyCollider = gameObject.AddComponent<PolygonCollider2D>();
+        polyCollider.isTrigger = true;
 
         // check if there is an animation
         if(item.GetComponent<ItemInfo>().isAnim)
@@ -38,8 +39,8 @@ public class ItemPickup : MonoBehaviour
             // general item pick up collider ...
             // call the prefabs pick up method.
 
-
-        
+            item.GetComponent<ItemInfo>().onPickup(collision.gameObject);
+            Destroy(gameObject);
         }
         
     }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UI_Ammo : MonoBehaviour
 {
-    private int shotgunAmmo = 100;                       // need to reference the players ammo here
+    
 
     private Text UI_ammo;
 
@@ -16,11 +16,13 @@ public class UI_Ammo : MonoBehaviour
 
     public void Update()
     {
-        UI_ammo.text = "Shotgun :" + shotgunAmmo;
+        AmmoPool ap = GameObject.FindGameObjectWithTag("Player").GetComponent<AmmoPool>();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            shotgunAmmo--;
-        }
+        UI_ammo.text = 
+            "Pistol:" + ap.pistolAmmo + 
+            "\nShotgun:" + ap.shotgunAmmo +
+            "\nRifle:" + ap.rifleAmmo;
+
+
     }
 }
