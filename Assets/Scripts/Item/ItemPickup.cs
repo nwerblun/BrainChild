@@ -42,6 +42,7 @@ public class ItemPickup : MonoBehaviour
             // call the prefabs pick up method.
             Debug.Log(item.GetComponent<ItemInfo>().isInteract.ToString());
 
+            //TODO Fix redundant code?
             if(item.GetComponent<ItemInfo>().isInteract && Input.GetButton("Interact"))
             {
                 Debug.Log("LE WHY");

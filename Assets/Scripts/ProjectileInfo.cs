@@ -8,16 +8,27 @@ public class ProjectileInfo : MonoBehaviour
     public float projectileKnockback;
     public float initialDmg;
     public float projectileFalloff;
-
-    private void Start()
-    {
-
-    }
+    public Vector2 initialLoc;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //Call the hit object's "TakesDamageFromProjectiles" hit method and update it with vals
-        
+        AffectedByProjectiles proj = collision.transform.GetComponent<AffectedByProjectiles>();
+        if (proj != null)
+        {
+            proj.TakeHit(ComputeDamage());
+            proj.TakeKnockback(ComputeForce());
+        }
         Destroy(gameObject);
+    }
+
+    private float ComputeDamage()
+    {
+        return initialDmg - (projectileFalloff * (initialLoc - (Vector2)transform.position).magnitude);
+    }
+
+    private Vector2 ComputeForce()
+    {
+        Rigidbody2D rb2d = transform.GetComponent<Rigidbody2D>();
+        return rb2d.velocity.normalized * projectileKnockback;
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Reloadable))]
-[RequireComponent(typeof(Rigidbody2D))]
 public class Fireable : MonoBehaviour
 {
     

@@ -49,7 +49,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e72f941d35108e479b680e5c6cb64bc, type: 2}
+  - {fileID: 2100000, guid: d96d9bf5d3bc44a4b82195021bece13b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,8 +79,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.11650276
+        time: 0.5021267
+        value: 0.21854372
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8264519066974621874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281abcae846f9454b924b4446874786f, type: 3}
+  m_Script: {fileID: 11500000, guid: b9e7fccd88afc4548ae3300b9ded163d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   drawStartLoc: {fileID: 0}
-  maxLineRenderDist: 200
+  maxLineRenderDist: 0
