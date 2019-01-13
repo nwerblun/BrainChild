@@ -47,4 +47,5 @@ public static class CustomUtils
         } while (x < min || x > max && iterations < 500);
         return x;
     }
+
 }

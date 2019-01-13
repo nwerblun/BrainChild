@@ -9,12 +9,13 @@ public class ProjectileInfo : MonoBehaviour
     public float initialDmg;
     public float projectileFalloff;
     public Vector2 initialLoc;
+    public Transform originator;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         AffectedByProjectiles proj = collision.transform.GetComponent<AffectedByProjectiles>();
-        if (proj != null)
-        {
+        if (proj != null) {
+            Debug.Log("HIT " + collision.transform.name);
             proj.TakeHit(ComputeDamage());
             proj.TakeKnockback(ComputeForce());
         }

@@ -5,10 +5,14 @@ using UnityEngine;
 public class TracksMouse : MonoBehaviour
 {
     private Vector3 originalScale;
+    public bool flipOnQuandrantChange;
+    public bool useAnchors;
+    public Transform anchorPoint;
+    public Transform anchorToMove;
 
     private void Start()
     {
-        originalScale = transform.localScale;    
+        originalScale = transform.localScale;
     }
 
     void Update() {
@@ -20,10 +24,18 @@ public class TracksMouse : MonoBehaviour
         float mouseAngle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         Vector3 desiredRotation = new Vector3(0, 0, Mathf.LerpAngle(currAngle, mouseAngle, Time.deltaTime * 50));
 
-        if (mouseAngle < 90 && mouseAngle > -90)
-            transform.localScale = originalScale;
-        else 
-            transform.localScale = new Vector3(originalScale.x, -originalScale.y, originalScale.z);
+
+        if (flipOnQuandrantChange) {
+            if (mouseAngle < 90 && mouseAngle > -90)
+                transform.localScale = originalScale;
+            else
+                transform.localScale = new Vector3(originalScale.x, -originalScale.y, originalScale.z);
+        }
+
+        //Vector2 temp = centerOffset - (Vector2)(Quaternion.Euler(0, 0, mouseAngle) * centerOffset);
+        //Debug.Log(temp);
         transform.eulerAngles = desiredRotation;
+        //transform.localPosition = new Vector3(originalLocalPos.x + temp.x, originalLocalPos.y + temp.y, 0);
+         
     }
 }

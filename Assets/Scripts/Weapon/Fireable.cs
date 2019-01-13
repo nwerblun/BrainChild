@@ -93,6 +93,9 @@ public class Fireable : MonoBehaviour
             projInfo.projectileFalloff = weaponInfo.projectileFalloff * weaponInfo.projectileFalloffModifier;
             projInfo.projectileKnockback = weaponInfo.projectileKnockback * weaponInfo.projectileKnockbackModifier;
             projInfo.initialDmg = weaponInfo.baseDmg * weaponInfo.dmgModifier;
+            projInfo.originator = transform.parent;
+            //Originator of the projectile can't be affected by said projectile
+            Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), transform.parent.GetComponent<Collider2D>());
         }
     }
 
