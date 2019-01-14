@@ -159,7 +159,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eab4ecefcc584054ab5d552781dca037
+      spriteID: 28531a709adebdd41ad92a6ce2e1e16d
       vertices: []
       indices: 
       edges: []
@@ -168,18 +168,18 @@ TextureImporter:
       name: TestCharNoArms_1
       rect:
         serializedVersion: 2
-        x: 279
-        y: 592
-        width: 63
-        height: 220
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 245
+        y: 595
+        width: 97
+        height: 214
+      alignment: 9
+      pivot: {x: 0.67926276, y: 0.5031256}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81a7739dcdf16a244ba27eb11879d4f8
+      spriteID: fd111c1b9d6d71049b5ef398f1e71680
       vertices: []
       indices: 
       edges: []
@@ -190,16 +190,16 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 285
-        width: 98
-        height: 215
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 97
+        height: 214
+      alignment: 9
+      pivot: {x: 0.5206841, y: 0.50312537}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d03e775d352e8a45848ef435dc76ca2
+      spriteID: d5d5efefa409d0a4eae343894e715f73
       vertices: []
       indices: 
       edges: []
@@ -208,18 +208,18 @@ TextureImporter:
       name: TestCharNoArms_3
       rect:
         serializedVersion: 2
-        x: 278
+        x: 245
         y: 283
-        width: 63
-        height: 226
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 97
+        height: 214
+      alignment: 9
+      pivot: {x: 0.672368, y: 0.5406273}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e9a57b47bbee0c40b0ba71f60780311
+      spriteID: b7768ee794170544e8dcfa6f2da3ffb3
       vertices: []
       indices: 
       edges: []
@@ -230,16 +230,16 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 19
-        width: 98
+        width: 97
         height: 214
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5137894, y: 0.50312525}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c50f75f8ab7023242a4ca7e4bf08498d
+      spriteID: ed1363f5aa6d9ff45a720f0ffeff05c4
       vertices: []
       indices: 
       edges: []
@@ -248,18 +248,18 @@ TextureImporter:
       name: TestCharNoArms_5
       rect:
         serializedVersion: 2
-        x: 270
+        x: 245
         y: 3
-        width: 64
-        height: 243
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 97
+        height: 242
+      alignment: 9
+      pivot: {x: 0.59652615, y: 0.5276359}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0de21f621650f37459bfe2d64ab3ebe5
+      spriteID: d6387eefce5117447bab098a7b1613e2
       vertices: []
       indices: 
       edges: []

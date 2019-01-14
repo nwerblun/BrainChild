@@ -42,20 +42,22 @@ public class Fireable : MonoBehaviour
                 GameObject projectile = Instantiate(bulletPrefab, fireLoc.position, rot * bulletPrefab.transform.rotation);
                 CheckAndApplyTemporary(projectile);
                 CheckAndApplyProjectileInfo(projectile);
-                //Each bullet has an angle spread that deviates its angle from the aim direction
-                //Each bullet also has a magnitude spread that takes the given direction and multiplies its magnitude by a random number centered around 1
-                float angleSpread = CustomUtils.NextGaussian(0, weaponInfo.bulletSpreadStd, -weaponInfo.maxSpreadAng, weaponInfo.maxSpreadAng);
-                float spreadMod = CustomUtils.NextGaussian(1, weaponInfo.bulletMagStd, -weaponInfo.maxSpreadMag, weaponInfo.maxSpreadMag);
-                //Returns a vector that is the initial direction, rotated by angleSpread and scaled by bullet speed
-                Vector2 randomizedDir = Quaternion.Euler(0, 0, angleSpread) * dir.normalized * weaponInfo.bulletSpeed;
-                randomizedDir *= spreadMod;
-                projectile.GetComponent<Rigidbody2D>().velocity = randomizedDir;
-
-                //Alternate option is to add force
+                if (weaponInfo.bulletSpreadStd != 0 || weaponInfo.bulletMagStd != 0) {
+                    //Each bullet has an angle spread that deviates its angle from the aim direction
+                    //Each bullet also has a magnitude spread that takes the given direction and multiplies its magnitude by a random number centered around 1
+                    float angleSpread = CustomUtils.NextGaussian(0, weaponInfo.bulletSpreadStd, -weaponInfo.maxSpreadAng, weaponInfo.maxSpreadAng);
+                    float spreadMod = CustomUtils.NextGaussian(1, weaponInfo.bulletMagStd, -weaponInfo.maxSpreadMag, weaponInfo.maxSpreadMag);
+                    //Returns a vector that is the initial direction, rotated by angleSpread and scaled by bullet speed
+                    Vector2 randomizedDir = Quaternion.Euler(0, 0, angleSpread) * dir.normalized * weaponInfo.bulletSpeed;
+                    randomizedDir *= spreadMod;
+                    projectile.GetComponent<Rigidbody2D>().velocity = randomizedDir;
+                    //Alternate option is to add force
+                }
+                else {
+                    projectile.GetComponent<Rigidbody2D>().velocity = dir.normalized * weaponInfo.bulletSpeed;
+                }
             }
-
-            // temp
-            GetComponent<AudioSource>().Play();
+            CheckAndPlayAudio();
             CheckAndApplyRecoil(-1 * dir);
             // Fired - now reset time till fire with fire rate and update ammo count
             timeTilFire = weaponInfo.fireRate;
@@ -63,7 +65,7 @@ public class Fireable : MonoBehaviour
         }
     }
 
-    bool CanFire() {
+    public bool CanFire() {
         return !(timeTilFire > 0 || !canFire || weaponInfo.ammoLeft <= 0);
     }
 
@@ -106,5 +108,11 @@ public class Fireable : MonoBehaviour
         if (parent != null && rb2d != null) {
             rb2d.AddForce(dir.normalized * weaponInfo.playerKnockback * weaponInfo.playerKnockbackModifier, ForceMode2D.Impulse);
         }
+    }
+
+    private void CheckAndPlayAudio()
+    {
+       if (GetComponent<AudioSource>() != null)
+            GetComponent<AudioSource>().Play();
     }
 }

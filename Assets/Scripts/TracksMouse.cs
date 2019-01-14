@@ -6,9 +6,7 @@ public class TracksMouse : MonoBehaviour
 {
     private Vector3 originalScale;
     public bool flipOnQuandrantChange;
-    public bool useAnchors;
-    public Transform anchorPoint;
-    public Transform anchorToMove;
+    public Transform defaultTrack;
 
     private void Start()
     {
@@ -19,23 +17,29 @@ public class TracksMouse : MonoBehaviour
         Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 currPos = transform.position;
         Vector2 diff = currMousePos - currPos;
-
-        float currAngle = transform.rotation.eulerAngles.z;
-        float mouseAngle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        Vector3 desiredRotation = new Vector3(0, 0, Mathf.LerpAngle(currAngle, mouseAngle, Time.deltaTime * 50));
-
-
-        if (flipOnQuandrantChange) {
-            if (mouseAngle < 90 && mouseAngle > -90)
-                transform.localScale = originalScale;
+        Vector3 desiredRotation;
+        if (diff.magnitude >= 3  || defaultTrack == null) {
+            float currAngle = transform.rotation.eulerAngles.z;
+            float mouseAngle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            desiredRotation = new Vector3(0, 0, Mathf.LerpAngle(currAngle, mouseAngle, Time.deltaTime * 50));
+            if (flipOnQuandrantChange) {
+                if (mouseAngle < 90 && mouseAngle > -90)
+                    transform.localScale = originalScale;
+                else
+                    transform.localScale = new Vector3(originalScale.x, -originalScale.y, originalScale.z);
+            }
+        } else {
+            if (defaultTrack != null)
+                desiredRotation = defaultTrack.rotation.eulerAngles;
             else
-                transform.localScale = new Vector3(originalScale.x, -originalScale.y, originalScale.z);
+                desiredRotation = transform.parent.rotation.eulerAngles;
         }
+           
 
-        //Vector2 temp = centerOffset - (Vector2)(Quaternion.Euler(0, 0, mouseAngle) * centerOffset);
+
+
         //Debug.Log(temp);
         transform.eulerAngles = desiredRotation;
-        //transform.localPosition = new Vector3(originalLocalPos.x + temp.x, originalLocalPos.y + temp.y, 0);
          
     }
 }

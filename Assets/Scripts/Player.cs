@@ -8,18 +8,18 @@ public class Player : MonoBehaviour
     public float maxMoveSpeed;
     public GameObject weapon;
     public Animator body;
-    public Animator arms;
     private Rigidbody2D rb2d;                   //Player's rigid body needed to add velocity
 
     private Vector3 originalBodyScale;
-    private Vector3 originalArmScale;
+    private Vector3 originalWeaponScale;
 
     // Start is called before the first frame update
     void Start()
     {
-        originalArmScale = arms.transform.localScale;
         originalBodyScale = body.transform.localScale;
-        //weapon = Instantiate(weapon, transform);
+        weapon = Instantiate(weapon, transform);
+        weapon.GetComponent<TracksMouse>().defaultTrack = transform.Find("Arm");
+        originalWeaponScale = weapon.transform.localScale;
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -32,24 +32,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 currPos = transform.position;
-        Vector2 diff = currMousePos - currPos;
+        //Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Vector2 currPos = transform.position;
+        //Vector2 diff = currMousePos - currPos;
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector2 moveVector = new Vector2(moveHorizontal, moveVertical).normalized * moveSpeed;
 
-        SetAnimationTriggers(moveHorizontal, moveVertical);
-
-        if (Input.GetButton("Fire1")) {
-            weapon.GetComponent<Fireable>().Fire(diff);
-        }
-
-        if (Input.GetButton("Reload")) {
-            weapon.GetComponent<Reloadable>().Reload();
-        }
-
+        SetPlayerAnimationTriggers(moveHorizontal, moveVertical);
+        SetWeaponAnimationTriggers(moveHorizontal, moveVertical);
         rb2d.AddForce(moveVector);
         rb2d.velocity = Vector2.ClampMagnitude(rb2d.velocity, maxMoveSpeed);
     }
@@ -70,40 +62,55 @@ public class Player : MonoBehaviour
         UI_Collision.setFlag(collision.gameObject.name);
     }
 
-    private void SetAnimationTriggers(float moveHorizontal, float moveVertical)
+    private void SetPlayerAnimationTriggers(float moveHorizontal, float moveVertical)
     {
-        Vector3 armDown = new Vector3(-1.02f, 0.75f, 0);
-        Vector3 armRight = new Vector3(1f, 1f, 0);
-        Vector3 armLeft = new Vector3(-2.68f, 1f, 0);
-        Vector3 armUp = new Vector3(-1.02f, 1.75f, 0);
-
-
         if (moveHorizontal != 0) {
             if (moveHorizontal < 0) {
-                arms.transform.localPosition = armLeft;
                 body.transform.localScale = new Vector3(-originalBodyScale.x, originalBodyScale.y, originalBodyScale.z);
-                arms.transform.localScale = new Vector3(-originalArmScale.x, originalArmScale.y, originalArmScale.z);
             } else {
-                arms.transform.localPosition = armRight;
                 body.transform.localScale = originalBodyScale;
-                arms.transform.localScale = originalArmScale;
             }
             body.SetTrigger("GoingRightOrLeft");
-            arms.SetTrigger("GoingRightOrLeft");
         }
         else if (moveVertical > 0) {
-            arms.transform.localPosition = armUp;
             body.SetTrigger("GoingUp");
-            arms.SetTrigger("GoingUp");
         }
         else if (moveVertical < 0) {
-            arms.transform.localPosition = armDown;
             body.SetTrigger("GoingDown");
-            arms.SetTrigger("GoingDown");
         }
         else {
             body.SetTrigger("Stopped");
-            arms.SetTrigger("Stopped");
+        }
+    }
+
+    private void SetWeaponAnimationTriggers(float moveHorizontal, float moveVertical)
+    {
+        Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 currPos = weapon.transform.position;
+        Vector2 diff = currMousePos - currPos;
+        weapon.transform.position = transform.Find("Arm").Find("Hand").position;
+        if (Input.GetButton("Reload")) {
+            weapon.GetComponent<Reloadable>().Reload();
+        }
+
+        if (moveHorizontal != 0) {
+            //if (moveHorizontal < 0) {
+            //    weapon.transform.localScale = new Vector3(-originalWeaponScale.x, originalWeaponScale.y, originalWeaponScale.z);
+            //}
+            //else {
+            //    weapon.transform.localScale = originalWeaponScale;
+            //}
+            weapon.GetComponent<Animator>().SetTrigger("GoingRightOrLeft");
+        }
+        else if (moveVertical != 0) {
+            weapon.GetComponent<Animator>().SetTrigger("GoingUpOrDown");
+        }
+
+        if (Input.GetButton("Fire1") && weapon.GetComponent<Fireable>().CanFire()) {
+            weapon.GetComponent<Fireable>().Fire(diff);
+            weapon.GetComponent<Animator>().SetBool("Shoot", true);
+        } else {
+            weapon.GetComponent<Animator>().SetBool("Shoot", false);
         }
     }
 }
