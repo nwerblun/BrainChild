@@ -18,6 +18,7 @@ public class UI_Controller : MonoBehaviour
 
     private bool inventory;
     private bool game;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,19 +40,28 @@ public class UI_Controller : MonoBehaviour
         // turn on inventory screen
         if(Input.GetKeyUp("tab") && inventory)
         {
+            // if in the inventory state change to game
             if(state == States.stateInventory)
             {
                 Cursor.visible = false;
                 gameHUD.SetActive(true);
                 inventoryHUD.SetActive(false);
                 state = States.stateGame;
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<Player>().setPlayerState(true);
             }
+
+            // change to inventory state
             else
             {
                 Cursor.visible = true;
                 gameHUD.SetActive(false);
                 inventoryHUD.SetActive(true);
                 state = States.stateInventory;
+
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<Player>().setPlayerState(false);
+
             }
         }
     }

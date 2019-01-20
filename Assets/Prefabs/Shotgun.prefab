@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9070526575914432167}
   - component: {fileID: 951101398730750736}
   - component: {fileID: 8340551871981028795}
+  - component: {fileID: 8623377843359046583}
   - component: {fileID: 1267571419088640854}
   m_Layer: 31
   m_Name: Shotgun
@@ -101,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipOnQuandrantChange: 1
+  defaultTrack: {fileID: 0}
 --- !u!114 &6630715570142066177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +262,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+--- !u!114 &8623377843359046583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559216925512390268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba20368e77db214e97821c2cbe2bd50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAnim: 0
+  isInteract: 1
 --- !u!95 &1267571419088640854
 Animator:
   serializedVersion: 3
