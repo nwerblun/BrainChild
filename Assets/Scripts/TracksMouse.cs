@@ -13,7 +13,7 @@ public class TracksMouse : MonoBehaviour
         originalScale = transform.localScale;
     }
 
-    public void updateArm() {
+    public void UpdateObj() {
         Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 currPos = transform.position;
         Vector2 diff = currMousePos - currPos;
