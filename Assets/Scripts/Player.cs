@@ -7,18 +7,22 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public float maxMoveSpeed;
     public GameObject weapon;
+    public GameObject arm;
     public Animator body;
     private Rigidbody2D rb2d;                   //Player's rigid body needed to add velocity
 
     private Vector3 originalBodyScale;
     private Vector3 originalWeaponScale;
 
+    private bool active;
+
     // Start is called before the first frame update
     void Start()
     {
+        active = true;
         originalBodyScale = body.transform.localScale;
+        arm = transform.Find("Arm").gameObject;
         weapon = Instantiate(weapon, transform);
-        weapon.GetComponent<TracksMouse>().defaultTrack = transform.Find("Arm");
         originalWeaponScale = weapon.transform.localScale;
         rb2d = GetComponent<Rigidbody2D>();
     }
@@ -27,23 +31,33 @@ public class Player : MonoBehaviour
     {
         Destroy(weapon);
         weapon = Instantiate(newWeapon, transform);
+        originalWeaponScale = weapon.transform.localScale;
+    }
+
+    public void setPlayerState(bool mode)
+    {
+        active = mode;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //Vector2 currPos = transform.position;
-        //Vector2 diff = currMousePos - currPos;
+        if(active)
+        {
+            //Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //Vector2 currPos = transform.position;
+            //Vector2 diff = currMousePos - currPos;
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector2 moveVector = new Vector2(moveHorizontal, moveVertical).normalized * moveSpeed;
-
-        SetPlayerAnimationTriggers(moveHorizontal, moveVertical);
-        SetWeaponAnimationTriggers(moveHorizontal, moveVertical);
-        rb2d.AddForce(moveVector);
-        rb2d.velocity = Vector2.ClampMagnitude(rb2d.velocity, maxMoveSpeed);
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+            Vector2 moveVector = new Vector2(moveHorizontal, moveVertical).normalized * moveSpeed;
+            arm.GetComponent<TracksMouse>().updateArm();
+            weapon.transform.rotation = arm.transform.rotation;
+            SetPlayerAnimationTriggers(moveHorizontal, moveVertical);
+            SetWeaponAnimationTriggers(moveHorizontal, moveVertical);
+            rb2d.AddForce(moveVector);
+            rb2d.velocity = Vector2.ClampMagnitude(rb2d.velocity, maxMoveSpeed);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

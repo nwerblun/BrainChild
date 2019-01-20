@@ -13,7 +13,7 @@ public class TracksMouse : MonoBehaviour
         originalScale = transform.localScale;
     }
 
-    void Update() {
+    public void updateArm() {
         Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 currPos = transform.position;
         Vector2 diff = currMousePos - currPos;
@@ -35,11 +35,7 @@ public class TracksMouse : MonoBehaviour
                 desiredRotation = transform.parent.rotation.eulerAngles;
         }
            
-
-
-
         //Debug.Log(temp);
         transform.eulerAngles = desiredRotation;
-         
     }
 }

@@ -34,6 +34,7 @@ public class Fireable : MonoBehaviour
 
     public void Fire(Vector2 dir)
     {
+ 
         if (CanFire())
         {
             Quaternion rot = transform.rotation;
