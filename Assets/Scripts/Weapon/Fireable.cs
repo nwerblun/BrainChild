@@ -13,6 +13,7 @@ public class Fireable : MonoBehaviour
     //private List<GameObject> bullets;
     private float timeTilFire;
     public bool canFire;
+    public bool reloading;
     private Transform fireLoc;
   
     private void Start()
@@ -67,8 +68,9 @@ public class Fireable : MonoBehaviour
     }
 
     public bool CanFire() {
-        return !(timeTilFire > 0 || !canFire || weaponInfo.ammoLeft <= 0);
+        return !(timeTilFire > 0 || !canFire || weaponInfo.ammoLeft <= 0 || reloading);
     }
+
 
     Transform GetFireLoc()
     {

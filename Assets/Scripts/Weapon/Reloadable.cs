@@ -22,9 +22,9 @@ public class Reloadable : MonoBehaviour
     {
         if (timeLeft > 0) {
             timeLeft -= Time.deltaTime;
-            fire.canFire = false;
+            fire.reloading = true;
         } else {
-            fire.canFire = true;
+            fire.reloading = false;
         }
     }
 
