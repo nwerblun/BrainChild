@@ -58,7 +58,7 @@ public class UI_Controller : MonoBehaviour
                 gameHUD.SetActive(false);
                 inventoryHUD.SetActive(true);
                 state = States.stateInventory;
-
+                inventoryHUD.transform.Find("Panel").gameObject.GetComponent<DisplayInventory>().Display();
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 player.GetComponent<Player>().setPlayerState(false);
 

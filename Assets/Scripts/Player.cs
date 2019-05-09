@@ -42,22 +42,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(active)
+        float moveHorizontal = 0;
+        float moveVertical = 0;
+
+        if (active)
         {
             //Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //Vector2 currPos = transform.position;
             //Vector2 diff = currMousePos - currPos;
-
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
             Vector2 moveVector = new Vector2(moveHorizontal, moveVertical).normalized * moveSpeed;
             arm.GetComponent<TracksMouse>().updateArm();
             weapon.transform.rotation = arm.transform.rotation;
-            SetPlayerAnimationTriggers(moveHorizontal, moveVertical);
             SetWeaponAnimationTriggers(moveHorizontal, moveVertical);
             rb2d.AddForce(moveVector);
             rb2d.velocity = Vector2.ClampMagnitude(rb2d.velocity, maxMoveSpeed);
         }
+        SetPlayerAnimationTriggers(moveHorizontal, moveVertical);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
