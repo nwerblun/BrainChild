@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -78,8 +78,9 @@ public class Player : MonoBehaviour
         UI_Collision.setFlag(collision.gameObject.name);
     }
 
-    private void SetPlayerAnimationTriggers(float moveHorizontal, float moveVertical)
+    private void UpdatePlayer(float moveHorizontal, float moveVertical)
     {
+        arm.GetComponent<TracksMouse>().UpdateObj();
         if (moveHorizontal != 0) {
             if (moveHorizontal < 0) {
                 body.transform.localScale = new Vector3(-originalBodyScale.x, originalBodyScale.y, originalBodyScale.z);
@@ -99,23 +100,24 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void SetWeaponAnimationTriggers(float moveHorizontal, float moveVertical)
+    private void UpdateWeapon(float moveHorizontal, float moveVertical)
     {
         Vector2 currMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 currPos = weapon.transform.position;
         Vector2 diff = currMousePos - currPos;
         weapon.transform.position = transform.Find("Arm").Find("Hand").position;
+        weapon.transform.rotation = arm.transform.rotation;
         if (Input.GetButton("Reload")) {
             weapon.GetComponent<Reloadable>().Reload();
         }
 
         if (moveHorizontal != 0) {
-            //if (moveHorizontal < 0) {
-            //    weapon.transform.localScale = new Vector3(-originalWeaponScale.x, originalWeaponScale.y, originalWeaponScale.z);
-            //}
-            //else {
-            //    weapon.transform.localScale = originalWeaponScale;
-            //}
+            if (moveHorizontal < 0) {
+                weapon.transform.localScale = new Vector3(-originalWeaponScale.x, originalWeaponScale.y, originalWeaponScale.z);
+            }
+            else {
+                weapon.transform.localScale = originalWeaponScale;
+            }
             weapon.GetComponent<Animator>().SetTrigger("GoingRightOrLeft");
         }
         else if (moveVertical != 0) {
